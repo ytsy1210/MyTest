@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="#E9E9E9"
+    >
+    <ImageView
+        android:paddingLeft="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/sweep_code"
+        android:layout_centerVertical="true"
+        android:id="@+id/imageView_home_sweep_code"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="御泥坊VIP商城"
+        android:gravity="center"
+        android:textSize="22sp"
+        android:textColor="#FB95A9"/>
+    <ImageView
+        android:paddingRight="10dp"
+        android:layout_centerVertical="true"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/message_center_icon"
+        android:layout_alignParentRight="true"
+        android:id="@+id/imageView_home_message"
+        />
+
+</RelativeLayout>
+   <!-- <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+<com.bawei.tianshuo.yunifang.selfView.MyListView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/listView_home">
+</com.bawei.tianshuo.yunifang.selfView.MyListView>
+    </ScrollView>-->
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/listView_home"
+        android:scrollbars="none"></ListView>
+
+
+</LinearLayout>

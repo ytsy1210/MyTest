@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="50dp"
+      >
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:text="商品展示"
+          android:textSize="25sp"
+          android:background="#F8F66F"
+          android:id="@+id/textView_display_classify"
+          />
+      <ImageButton
+          android:layout_width="15dp"
+          android:layout_height="15dp"
+          android:layout_marginLeft="10dp"
+          android:layout_centerVertical="true"
+          android:background="@drawable/selector_pressed_back"
+          android:id="@+id/imageButton_display_classify"
+          />
+  </RelativeLayout>
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:id="@+id/recyclerView_classify_item">
+
+</android.support.v7.widget.RecyclerView>
+</LinearLayout>
