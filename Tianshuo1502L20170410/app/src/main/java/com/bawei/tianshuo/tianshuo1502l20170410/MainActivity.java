@@ -17,10 +17,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button reSet;
     private Button start;
     private int mix;
-    private int time=30;
-    Timer timer=new Timer();
+    private int time;
     private TextView textView;
+    private Timer timer;
 
+    class MyTimer extends TimerTask{
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    time--;
+                    mix = mix + 1;
+                    circle.setProgress(mix);
+                    if (time<=0) {
+                        timer.cancel();
+                    }
+                    textView.setText(time+"");
+                }
+
+            });
+
+        }
+    }
+    /*匿名内部类，只可调用一次
+ TimerTask task=new TimerTask() {
+        @Override
+        public void run() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    time--;
+                    mix = mix + 1;
+                    textView.setText(time+"");
+                    circle.setProgress(mix);
+                    if (time==0) {
+                        timer.cancel();
+                    }
+                }
+
+            });
+
+        }
+    };*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,9 +76,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_start:
+                textView.setVisibility(View.VISIBLE);
+                if (timer!=null){
+                    timer.cancel();
+                }
+                time=30;
                 mix = 0;
                 circle.setMax(30);
-             timer.schedule(task,0,1000);
+                timer = new Timer();
+               // timer.schedule(new MyTimer(),0,1000);
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                time--;
+                                mix = mix + 1;
+                                circle.setProgress(mix);
+                                if (time<=0) {
+                                    timer.cancel();
+                                }
+                                textView.setText(time+"");
+                            }
+
+                        });
+
+                    }
+                },0,1000);
                /* mix = 0;
                 circle.setMax(100);
                 new Thread(new Runnable() {
@@ -64,29 +128,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }).start();*/
                 break;
             case R.id.button_reSet:
+                textView.setVisibility(View.GONE);
                 timer.cancel();
                 mix=0;
                 circle.setProgress(mix);
+
                 break;
         }
     }
-    TimerTask task=new TimerTask() {
-        @Override
-        public void run() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                          time--;
-                          mix = mix + 1;
-                          textView.setText(time+"");
-                          circle.setProgress(mix);
-                    if (time==0) {
-                        timer.cancel();
-                    }
-                    }
 
-            });
-
-        }
-    };
 }
